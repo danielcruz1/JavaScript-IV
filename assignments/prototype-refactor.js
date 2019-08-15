@@ -118,13 +118,39 @@ class Humanoid extends CharacterStats {
         this.team = character.team;
         this.weapons = character.weapons;
         this.language = character.language;
+        this.move = character.move;
     }
     greet() {
         return `${this.name} offers a greeting in ${this.language}.`;
     }
+    flex() {
+        return `${this.name} appears and is in a constant state of ${this.move}.`;
+    }
+    attack() {
+        return `${this.name} swings his ${this.weapons[0]} and ${this.weapons[1]}.`;
+    }
 }
 
+//STRETCH: Class syntax 
+class Villain extends Humanoid {
+    constructor(character) {
+        super(character);
+        // this.team = character.team;
+        // this.weapons = character.weapons;
+        // this.language = character.language;
+        // // this.move = characater.move;
+    }
+}
 
+class Hero extends Humanoid {
+    constructor(character) {
+        super(character);
+        // this.team = character.team;
+        // this.weapons = character.weapons;
+        // this.language = character.language;
+        // // this.move = characater.move;
+    }
+}
   
   
   /*
@@ -185,6 +211,42 @@ class Humanoid extends CharacterStats {
       ],
       language: 'Elvish',
     });
+
+    const villain = new Humanoid({
+        createdAt: new Date(),
+        dimensions: {
+          length: 1,
+          width: 2,
+          height: 4,
+        },
+        healthPoints: 10,
+        name: 'Billain',
+        team: 'Billainopolis',
+        weapons: [
+          'Fire Fang',
+          'Charm',
+        ],
+        language: 'Billainish',
+        move: 'constant flexing'
+      });
+
+      const hero = new Humanoid({
+        createdAt: new Date(),
+        dimensions: {
+          length: 1,
+          width: 2,
+          height: 4,
+        },
+        healthPoints: 10,
+        name: 'Hiro',
+        team: 'Savioropolis',
+        weapons: [
+          'Hammer of Justice',
+          'Thumper of Equality',
+        ],
+        language: 'Hirospeak',
+        move: 'flailing'
+      });  
   
     console.log(mage.createdAt); // Today's date
     console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
@@ -196,9 +258,12 @@ class Humanoid extends CharacterStats {
     console.log(archer.greet()); // Lilith offers a greeting in Elvish.
     console.log(mage.takeDamage()); // Bruce took damage.
     console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+    console.log(villain.flex());
+    console.log(hero.attack());
   
   
     // Stretch task: 
     // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
     // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
     // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
